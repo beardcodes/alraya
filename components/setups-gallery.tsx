@@ -11,6 +11,8 @@ import { Dialog, DialogClose, DialogContent, DialogTitle } from "@/components/ui
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 // Photo ids map to /images/<id>.webp; captions live in lib/content.ts
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+
 const setups: [string, string[]][] = [
   ["weddings", ["20", "17", "21", "18", "22", "19", "10", "03", "05", "02", "04", "16"]],
   ["conference", ["25", "26", "27"]],
@@ -58,7 +60,7 @@ export function SetupsGallery({ t, dir }: { t: Content["setups"]; dir: string })
                   }
                 >
                   <Image
-                    src={`/images/${p}.webp`}
+                    src={`${BASE}/images/${p}.webp`}
                     alt={t.alts[p]}
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
@@ -87,7 +89,7 @@ export function SetupsGallery({ t, dir }: { t: Content["setups"]; dir: string })
           {current && (
             <>
               <div className="relative h-[75vh]">
-                <Image src={`/images/${current}.webp`} alt={t.alts[current]} fill sizes="90vw" className="object-contain" />
+                <Image src={`${BASE}/images/${current}.webp`} alt={t.alts[current]} fill sizes="90vw" className="object-contain" />
               </div>
               <div className="flex items-center justify-between gap-4 bg-popover p-3">
                 <DialogTitle className="text-sm font-normal">{t.alts[current]}</DialogTitle>

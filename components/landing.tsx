@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import {
   ArrowRightIcon,
   CarIcon,
@@ -24,12 +25,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+
 const EMAIL = "Zainab.ElQuaroui@marriott.com"
 const PHONES = ["99602084", "99767856"]
 const MAP_HREF = "https://maps.google.com/?q=Arraya+Ballroom+Sharq+Kuwait+City"
 
 const navIds = ["events", "setups", "capacity", "facilities", "location"]
-const eventImages = ["/images/21.webp", "/images/25.webp", "/images/28.webp", "/images/24.webp"]
+const eventImages = [`${BASE}/images/21.webp`, `${BASE}/images/25.webp`, `${BASE}/images/28.webp`, `${BASE}/images/24.webp`]
 const facilityIcons = [UsersIcon, MonitorIcon, PlugZapIcon, RulerIcon, CoffeeIcon, CarIcon, TruckIcon, DoorOpenIcon, WrenchIcon]
 
 // From the Arraya floor plan brochure; names come from content.capacity.rooms (same order)
@@ -81,7 +84,7 @@ export function Landing({ lang }: { lang: Lang }) {
               size="sm"
               variant="ghost"
               nativeButton={false}
-              render={<a href={t.switchHref} />}
+              render={<Link href={t.switchHref} />}
               className="text-white hover:bg-white/10 hover:text-white"
             >
               <GlobeIcon data-icon="inline-start" />
@@ -96,7 +99,7 @@ export function Landing({ lang }: { lang: Lang }) {
 
       {/* Hero */}
       <section className="relative isolate flex min-h-svh items-end overflow-hidden text-white">
-        <Image src="/images/20.webp" alt={t.hero.alt} fill preload sizes="100vw" className="-z-10 object-cover" />
+        <Image src={`${BASE}/images/20.webp`} alt={t.hero.alt} fill preload sizes="100vw" className="-z-10 object-cover" />
         <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/40 to-black/20" />
         <div className="mx-auto w-full max-w-7xl px-4 pt-32 pb-16 sm:px-6 sm:pb-24">
           <Eyebrow className="text-white/70">{t.hero.eyebrow}</Eyebrow>
@@ -141,10 +144,10 @@ export function Landing({ lang }: { lang: Lang }) {
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div className="relative aspect-3/4 overflow-hidden rounded-xl">
-            <Image src="/images/17.webp" alt={t.intro.alts[0]} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+            <Image src={`${BASE}/images/17.webp`} alt={t.intro.alts[0]} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
           </div>
           <div className="relative mt-12 aspect-3/4 overflow-hidden rounded-xl">
-            <Image src="/images/26.webp" alt={t.intro.alts[1]} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+            <Image src={`${BASE}/images/26.webp`} alt={t.intro.alts[1]} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
           </div>
         </div>
       </section>
@@ -202,7 +205,7 @@ export function Landing({ lang }: { lang: Lang }) {
               <CardContent>
                 <div className="relative aspect-[1.4] overflow-hidden rounded-lg bg-white">
                   <Image
-                    src="/images/floorplan.webp"
+                    src={`${BASE}/images/floorplan.webp`}
                     alt={t.capacity.planAlt}
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
@@ -269,7 +272,7 @@ export function Landing({ lang }: { lang: Lang }) {
 
       {/* Location + CTA */}
       <section id="location" className="relative isolate scroll-mt-16 overflow-hidden text-white">
-        <Image src="/images/27.webp" alt="" fill sizes="100vw" className="-z-10 object-cover" />
+        <Image src={`${BASE}/images/27.webp`} alt="" fill sizes="100vw" className="-z-10 object-cover" />
         <div className="absolute inset-0 -z-10 bg-black/75" />
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-2 lg:items-center">
           <div>
